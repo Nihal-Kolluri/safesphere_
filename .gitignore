@@ -1,0 +1,33 @@
+# Build and IDE artifacts
+target/
+bin/
+*.class
+*.jar
+!lib/*.jar
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Powershell runner helper
+powershell.cmd
+
+# OS files
+Thumbs.db
+[Dd]esktop.ini
+.DS_Store
+
+# Python virtual environment and caches
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env/
+env/
+.pytest_cache/
+
+# Local databases
+*.db-journal
+safesphere_local.db
