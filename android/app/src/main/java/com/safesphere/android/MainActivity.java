@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button[] screenChips = new Button[12];
     private View[] screenViews = new View[12];
     private int currentScreenIndex = 2; // Default to Screen 2 (Home Dashboard)
+    private boolean isNavigatingProgrammatically = false;
 
     // Screen 3 Trigger Countdown
     private CountDownTimer triggerCountdownTimer;
@@ -233,21 +234,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
         // Handle Bottom Navigation visibility and selection
-        if (screenNumber == 2) {
+        if (bottomNavigation != null) {
             bottomNavigation.setVisibility(View.VISIBLE);
-            bottomNavigation.setSelectedItemId(R.id.nav_home);
-        } else if (screenNumber == 6) {
-            bottomNavigation.setVisibility(View.VISIBLE);
-            bottomNavigation.setSelectedItemId(R.id.nav_contacts);
-        } else if (screenNumber == 10) {
-            bottomNavigation.setVisibility(View.VISIBLE);
-            bottomNavigation.setSelectedItemId(R.id.nav_timeline);
-        } else if (screenNumber == 12) {
-            bottomNavigation.setVisibility(View.VISIBLE);
-            bottomNavigation.setSelectedItemId(R.id.nav_more);
-        } else {
-            // For full-screen emergency flows (Onboarding, Trigger, Types, Incident, Crash Alert, etc.)
-            bottomNavigation.setVisibility(View.VISIBLE);
+            int targetNavId = -1;
+            if (screenNumber == 2) {
+                targetNavId = R.id.nav_home;
+            } else if (screenNumber == 6) {
+                targetNavId = R.id.nav_contacts;
+            } else if (screenNumber == 10) {
+                targetNavId = R.id.nav_timeline;
+            } else if (screenNumber == 12) {
+                targetNavId = R.id.nav_more;
+            }
+
+            if (targetNavId != -1 && bottomNavigation.getSelectedItemId() != targetNavId) {
+                isNavigatingProgrammatically = true;
+                try {
+                    bottomNavigation.setSelectedItemId(targetNavId);
+                } finally {
+                    isNavigatingProgrammatically = false;
+                }
+            }
         }
     }
 
@@ -262,6 +269,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private void setupBottomNavigation() {
         bottomNavigation.setOnItemSelectedListener(item -> {
+            if (isNavigatingProgrammatically) {
+                return true;
+            }
             int id = item.getItemId();
             if (id == R.id.nav_home) {
                 showScreen(2);
