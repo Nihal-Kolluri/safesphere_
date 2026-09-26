@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_shield"
-        android:icon="@drawable/ic_shield"
-        android:title="SOS Shield" />
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
 
     <item
-        android:id="@+id/nav_map"
-        android:icon="@drawable/ic_map"
-        android:title="Safe Journey" />
+        android:id="@+id/nav_contacts"
+        android:icon="@drawable/ic_contacts"
+        android:title="Contacts" />
 
     <item
-        android:id="@+id/nav_medical"
-        android:icon="@drawable/ic_medical"
-        android:title="Medical ID" />
+        android:id="@+id/nav_timeline"
+        android:icon="@drawable/ic_timeline"
+        android:title="Timeline" />
 
     <item
-        android:id="@+id/nav_sync"
-        android:icon="@drawable/ic_sync"
-        android:title="IoT Sync" />
+        android:id="@+id/nav_more"
+        android:icon="@drawable/ic_more"
+        android:title="More" />
 </menu>

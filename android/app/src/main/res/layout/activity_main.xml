@@ -4,779 +4,278 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/bg_light">
 
-    <!-- Top Persistent System Header -->
+    <!-- Top Quick Demo Bar / Screen Switcher (Allows instant preview of all 12 screens) -->
     <LinearLayout
-        android:id="@+id/topBar"
+        android:id="@+id/quickScreenSwitcherBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="#1E293B"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="12dp">
+        android:background="#0F172A"
+        android:orientation="vertical"
+        android:paddingVertical="4dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvAppTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SafeSphere Mobile"
-                android:textColor="@color/text_main"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvSystemStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="@string/status_monitoring"
-                android:textColor="@color/accent_green"
-                android:textSize="11sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvTelemetryQuick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:text="⚡ 85%  📶 5G"
-            android:textColor="@color/text_muted"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <!-- Extreme Survival Warning Banner (Visible only in Survival Mode) -->
-    <LinearLayout
-        android:id="@+id/bannerSurvival"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/topBar"
-        android:background="@drawable/bg_warning_banner"
-        android:padding="10dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tvSurvivalWarning"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/survival_warning"
-            android:textColor="@color/white"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp">
+
+                <Button
+                    android:id="@+id/chipScreen1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="1. Welcome"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="@color/brand_blue"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="2. Home"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="@color/emergency_red"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="3. Trigger"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="4. Types"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="5. Incident"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="6. Contacts"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="7. Detection"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="8. Evidence"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="9. Responder"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="10. Timeline"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="11. Summary"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/chipScreen12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:backgroundTint="#334155"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="12. Settings"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </HorizontalScrollView>
     </LinearLayout>
 
-    <!-- Main Content Container for Tab Views -->
+    <!-- Main Screens Container holding all 12 screen layouts -->
     <FrameLayout
-        android:id="@+id/contentFrame"
+        android:id="@+id/screensContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigation"
-        android:layout_below="@id/bannerSurvival">
-
-        <!-- ========================================== -->
-        <!-- TAB 1: SOS SHIELD & EMERGENCY TRIGGER      -->
-        <!-- ========================================== -->
-        <ScrollView
-            android:id="@+id/tabShield"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
-
-            <LinearLayout
-                android:id="@+id/containerShield"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <!-- Silent Countdown Window Card -->
-                <LinearLayout
-                    android:id="@+id/cardCountdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="14dp"
-                    android:background="@drawable/bg_card_dark"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="SILENT CONFIRMATION WINDOW"
-                        android:textColor="@color/accent_amber"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvCountdownSeconds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="10s"
-                        android:textColor="@color/white"
-                        android:textSize="38sp"
-                        android:textStyle="bold" />
-
-                    <ProgressBar
-                        android:id="@+id/progressCountdown"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="8dp"
-                        android:layout_marginTop="6dp"
-                        android:max="10"
-                        android:progress="10" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/btnCancelCountdown"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:backgroundTint="#475569"
-                            android:text="Cancel (False Alarm)"
-                            android:textColor="@color/white"
-                            android:textSize="11sp" />
-
-                        <View
-                            android:layout_width="8dp"
-                            android:layout_height="1dp" />
-
-                        <Button
-                            android:id="@+id/btnConfirmCountdown"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:backgroundTint="@color/primary_red"
-                            android:text="Confirm Now"
-                            android:textColor="@color/white"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- Primary Animated SOS Button -->
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="12dp">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnSOS"
-                        android:layout_width="160dp"
-                        android:layout_height="160dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/bg_sos_circle"
-                        android:text="@string/sos_title"
-                        android:textColor="@color/white"
-                        android:textSize="40sp"
-                        android:textStyle="bold" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/tvSosHint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Tap to initiate silent confirmation &amp; broadcast capsule"
-                    android:textColor="@color/text_muted"
-                    android:textSize="11sp" />
-
-                <!-- Acoustic Siren & Rescue Strobe Quick Bar -->
-                <LinearLayout
-                    android:id="@+id/quickAlertBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btnToggleSiren"
-                        android:layout_width="0dp"
-                        android:layout_height="44dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#1E293B"
-                        android:text="🔊 Loud Siren: OFF"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="1dp" />
-
-                    <Button
-                        android:id="@+id/btnToggleStrobe"
-                        android:layout_width="0dp"
-                        android:layout_height="44dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#1E293B"
-                        android:text="⚡ Strobe Light: OFF"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- Speed Dial 112 / Emergency Services -->
-                <LinearLayout
-                    android:id="@+id/speedDialBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btnCallPolice"
-                        android:layout_width="0dp"
-                        android:layout_height="38dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#1E3A8A"
-                        android:text="🚓 Police 112"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-
-                    <View
-                        android:layout_width="6dp"
-                        android:layout_height="1dp" />
-
-                    <Button
-                        android:id="@+id/btnCallAmbulance"
-                        android:layout_width="0dp"
-                        android:layout_height="38dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#991B1B"
-                        android:text="🚑 Medical 108"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-
-                    <View
-                        android:layout_width="6dp"
-                        android:layout_height="1dp" />
-
-                    <Button
-                        android:id="@+id/btnCallFire"
-                        android:layout_width="0dp"
-                        android:layout_height="38dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#C2410C"
-                        android:text="🚒 Fire 101"
-                        android:textColor="@color/white"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <!-- "I Can't Speak" Questionnaire Card -->
-                <LinearLayout
-                    android:id="@+id/cardQuestionnaire"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/bg_card_dark"
-                    android:orientation="vertical"
-                    android:padding="14dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cant_speak_title"
-                        android:textColor="@color/text_main"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <!-- Q1: Injured -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/question_injured"
-                            android:textColor="@color/text_main"
-                            android:textSize="12sp" />
-
-                        <Button
-                            android:id="@+id/btnInjuredYes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="34dp"
-                            android:backgroundTint="@color/primary_red"
-                            android:text="@string/yes"
-                            android:textSize="11sp" />
-
-                        <Button
-                            android:id="@+id/btnInjuredNo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="34dp"
-                            android:layout_marginStart="6dp"
-                            android:backgroundTint="#475569"
-                            android:text="@string/no"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-
-                    <!-- Q2: Threat Nearby -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/question_threat"
-                            android:textColor="@color/text_main"
-                            android:textSize="12sp" />
-
-                        <Button
-                            android:id="@+id/btnThreatYes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="34dp"
-                            android:backgroundTint="@color/primary_red"
-                            android:text="@string/yes"
-                            android:textSize="11sp" />
-
-                        <Button
-                            android:id="@+id/btnThreatNo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="34dp"
-                            android:layout_marginStart="6dp"
-                            android:backgroundTint="#475569"
-                            android:text="@string/no"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/tvTriageFeedback"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="6dp"
-                        android:text="Responses are packaged into the Emergency Capsule"
-                        android:textColor="@color/text_muted"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
-
-        <!-- ========================================== -->
-        <!-- TAB 2: SAFE JOURNEY & INTERACTIVE MAP      -->
-        <!-- ========================================== -->
-        <LinearLayout
-            android:id="@+id/tabMap"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <!-- Interactive Leaflet WebView -->
-            <WebView
-                android:id="@+id/mapWebView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <!-- Journey Controls Bottom Bar -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#1E293B"
-                android:orientation="vertical"
-                android:padding="12dp">
-
-                <TextView
-                    android:id="@+id/tvJourneyStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Safe Corridor Active · Corridor: Cyber Towers → Jubilee Hills"
-                    android:textColor="@color/accent_green"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btnCenterLocation"
-                        android:layout_width="0dp"
-                        android:layout_height="38dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#334155"
-                        android:text="🎯 Center Location"
-                        android:textSize="11sp" />
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="1dp" />
-
-                    <Button
-                        android:id="@+id/btnSimulateDeviation"
-                        android:layout_width="0dp"
-                        android:layout_height="38dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="#B45309"
-                        android:text="⚠ Trigger Deviation (+420m)"
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- ========================================== -->
-        <!-- TAB 3: MEDICAL ID & EMERGENCY CONTACTS     -->
-        <!-- ========================================== -->
-        <ScrollView
-            android:id="@+id/tabMedical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <!-- Medical Profile Card -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_card_dark"
-                    android:orientation="vertical"
-                    android:padding="14dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PERSONAL MEDICAL EMERGENCY ID"
-                        android:textColor="@color/text_main"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvMedicalBlood"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Blood Group: O+ (Universal Donor)"
-                        android:textColor="@color/accent_amber"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvMedicalAllergies"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Known Allergies: Penicillin, Peanuts"
-                        android:textColor="@color/text_main"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tvMedicalConditions"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Conditions: Mild Asthma (Inhaler in pocket)"
-                        android:textColor="@color/text_main"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tvMedicalOrganDonor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Organ Donor: YES · Encrypted in AES-256 Vault"
-                        android:textColor="@color/accent_green"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <!-- Trusted Contacts Directory -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/bg_card_dark"
-                    android:orientation="vertical"
-                    android:padding="14dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TRUSTED EMERGENCY CONTACTS (LEVEL 1)"
-                        android:textColor="@color/text_main"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="1. Family: +91-98480-12345 (Father)"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="2. Friend: +91-98765-43210 (Saketh)"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="3. Campus Security: +91-94400-00112"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-
-                    <Button
-                        android:id="@+id/btnSimulateSms"
-                        android:layout_width="match_parent"
-                        android:layout_height="38dp"
-                        android:layout_marginTop="12dp"
-                        android:backgroundTint="#059669"
-                        android:text="📩 Simulate SOS SMS Broadcast to Contacts"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
-
-        <!-- ========================================== -->
-        <!-- TAB 4: IOT & 112 DISPATCHER SYNC           -->
-        <!-- ========================================== -->
-        <ScrollView
-            android:id="@+id/tabSync"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <!-- Command Hub Sync Settings Card -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_card_dark"
-                    android:orientation="vertical"
-                    android:padding="14dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="112 DISPATCH HUB CONNECTION"
-                        android:textColor="@color/accent_blue"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Command Server IP (Desktop Dashboard):"
-                        android:textColor="@color/text_muted"
-                        android:textSize="11sp" />
-
-                    <EditText
-                        android:id="@+id/etServerHost"
-                        android:layout_width="match_parent"
-                        android:layout_height="42dp"
-                        android:layout_marginTop="4dp"
-                        android:background="#0F172A"
-                        android:fontFamily="monospace"
-                        android:hint="10.0.2.2:8080"
-                        android:paddingHorizontal="10dp"
-                        android:text="10.0.2.2:8080"
-                        android:textColor="@color/white"
-                        android:textColorHint="#64748B"
-                        android:textSize="13sp" />
-
-                    <Button
-                        android:id="@+id/btnTestConnection"
-                        android:layout_width="match_parent"
-                        android:layout_height="38dp"
-                        android:layout_marginTop="8dp"
-                        android:backgroundTint="#2563EB"
-                        android:text="📡 Ping 112 Command Desk"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/tvConnectionStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="6dp"
-                        android:text="Status: Ready to connect"
-                        android:textColor="@color/accent_green"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <!-- Live Hardware Diagnostics Card -->
-                <LinearLayout
-                    android:id="@+id/cardHardware"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/bg_card_dark"
-                    android:orientation="vertical"
-                    android:padding="14dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LIVE HARDWARE SENSORS"
-                        android:textColor="@color/accent_purple"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvLiveSensorReadout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="monospace"
-                        android:text="Accelerometer: 1.0G (Live OS Sensor)"
-                        android:textColor="@color/text_main"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/tvLiveBatteryReadout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="monospace"
-                        android:text="Battery: 85% (Optimal Profile)"
-                        android:textColor="@color/accent_green"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/tvLiveNetworkReadout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="monospace"
-                        android:text="Network: CONNECTED (Wi-Fi/Cellular)"
-                        android:textColor="@color/text_muted"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/tvLiveGpsReadout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="monospace"
-                        android:text="GPS Interval: 5s (Optimal Profile)"
-                        android:textColor="@color/text_muted"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/tvLiveMeshReadout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="monospace"
-                        android:text="Mesh Buffer: 0 packets queued"
-                        android:textColor="@color/text_muted"
-                        android:textSize="11sp" />
-
-                    <!-- Quick Diagnostic Simulation Triggers -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Hackathon Testing &amp; Sensor Simulation:"
-                        android:textColor="@color/text_muted"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/btnSimulateCrash"
-                            android:layout_width="0dp"
-                            android:layout_height="36dp"
-                            android:layout_weight="1"
-                            android:backgroundTint="#991B1B"
-                            android:text="💥 8.6G Crash"
-                            android:textSize="10sp" />
-
-                        <View
-                            android:layout_width="6dp"
-                            android:layout_height="1dp" />
-
-                        <Button
-                            android:id="@+id/btnSimulateThreat"
-                            android:layout_width="0dp"
-                            android:layout_height="36dp"
-                            android:layout_weight="1"
-                            android:backgroundTint="#7E22CE"
-                            android:text="🔥 CV Threat"
-                            android:textSize="10sp" />
-
-                        <View
-                            android:layout_width="6dp"
-                            android:layout_height="1dp" />
-
-                        <Button
-                            android:id="@+id/btnSimulateLowBattery"
-                            android:layout_width="0dp"
-                            android:layout_height="36dp"
-                            android:layout_weight="1"
-                            android:backgroundTint="#B45309"
-                            android:text="🪫 12% Battery"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
-
+        android:layout_below="@id/quickScreenSwitcherBar">
+
+        <!-- 1. Welcome / Onboarding Screen -->
+        <include
+            android:id="@+id/viewScreen1Onboarding"
+            layout="@layout/layout_screen_onboarding"
+            android:visibility="gone" />
+
+        <!-- 2. Home Dashboard Screen (Default Visible) -->
+        <include
+            android:id="@+id/viewScreen2Home"
+            layout="@layout/layout_screen_home"
+            android:visibility="visible" />
+
+        <!-- 3. Emergency Trigger Screen -->
+        <include
+            android:id="@+id/viewScreen3Trigger"
+            layout="@layout/layout_screen_trigger"
+            android:visibility="gone" />
+
+        <!-- 4. Emergency Type Selection Screen -->
+        <include
+            android:id="@+id/viewScreen4Types"
+            layout="@layout/layout_screen_types"
+            android:visibility="gone" />
+
+        <!-- 5. Live Incident Screen -->
+        <include
+            android:id="@+id/viewScreen5Incident"
+            layout="@layout/layout_screen_incident"
+            android:visibility="gone" />
+
+        <!-- 6. Contacts & Family Screen -->
+        <include
+            android:id="@+id/viewScreen6Contacts"
+            layout="@layout/layout_screen_contacts"
+            android:visibility="gone" />
+
+        <!-- 7. Automatic Detection Alert Screen -->
+        <include
+            android:id="@+id/viewScreen7CrashAlert"
+            layout="@layout/layout_screen_crash_alert"
+            android:visibility="gone" />
+
+        <!-- 8. Evidence Capture Screen -->
+        <include
+            android:id="@+id/viewScreen8Evidence"
+            layout="@layout/layout_screen_evidence"
+            android:visibility="gone" />
+
+        <!-- 9. Responder View Screen -->
+        <include
+            android:id="@+id/viewScreen9Responder"
+            layout="@layout/layout_screen_responder"
+            android:visibility="gone" />
+
+        <!-- 10. Live Timeline Screen -->
+        <include
+            android:id="@+id/viewScreen10Timeline"
+            layout="@layout/layout_screen_timeline"
+            android:visibility="gone" />
+
+        <!-- 11. Post-Incident Summary Screen -->
+        <include
+            android:id="@+id/viewScreen11Summary"
+            layout="@layout/layout_screen_summary"
+            android:visibility="gone" />
+
+        <!-- 12. Settings & Preferences Screen -->
+        <include
+            android:id="@+id/viewScreen12Settings"
+            layout="@layout/layout_screen_settings"
+            android:visibility="gone" />
     </FrameLayout>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation Bar (Home, Contacts, Timeline, More) -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="#0F172A"
-        app:itemIconTint="@color/selector_nav_colors"
-        app:itemTextColor="@color/selector_nav_colors"
+        android:background="@color/surface_white"
+        app:elevation="8dp"
+        app:itemIconTint="@color/brand_blue"
+        app:itemTextColor="@color/text_primary_dark"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 
