@@ -176,6 +176,36 @@ java -jar target/safesphere-1.0.0.jar
 
 ---
 
+### 📱 Native Android Mobile App (`android/`)
+
+SafeSphere includes a full native Android project under [`android/`](file:///d:/Sem%20Project/safesphere/android) implementing the Victim Client (M1) and Survival Mode (M3) connected directly to **real Android hardware APIs**:
+
+- **Real Battery Monitoring:** Uses Android `BatteryManager` broadcast receiver to dynamically trigger the `SurvivalEngine` decay loop.
+- **Real Crash Impact Detection:** Uses Android `SensorManager` with `Sensor.TYPE_ACCELEROMETER` to detect severe physical deceleration spikes ($>4.5G$).
+- **Real Carrier / Wi-Fi Monitoring:** Uses `ConnectivityManager.NetworkCallback` to automatically engage the `MeshStoreAndForward` offline buffer when disconnected.
+- **OLED Extreme Survival Transformation:** At $\le 15\%$ battery, automatically switches the window to `#000000` pitch black, lowers window brightness, and hides non-essential views.
+- **Native AES-256-GCM Evidence Vault:** Runs natively on Android using `javax.crypto`.
+
+#### Building the Android APK:
+```cmd
+# One-click build via batch script:
+build_android.bat
+
+# Or via Gradle inside android/:
+cd android
+.\gradlew assembleDebug
+```
+The output APK is generated at:
+`android/app/build/outputs/apk/debug/app-debug.apk`
+
+#### Installing on an Android Device or Emulator:
+```cmd
+adb install -r android/app/build/outputs/apk/debug/app-debug.apk
+```
+Or open the `android/` folder directly in **Android Studio** and click **Run (Shift+F10)**!
+
+---
+
 ## 5. Live 5-Minute Demo Script (For Pitch & Judging)
 
 Follow this exact flow during hackathon presentations:

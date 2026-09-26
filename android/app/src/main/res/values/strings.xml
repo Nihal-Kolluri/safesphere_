@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SafeSphere</string>
+    <string name="sos_title">SOS</string>
+    <string name="status_monitoring">● SYSTEM SAFE · MONITORING</string>
+    <string name="cant_speak_title">“I CAN’T SPEAK” SILENT TRIAGE</string>
+    <string name="question_injured">Are you injured?</string>
+    <string name="question_threat">Is threat nearby?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="survival_warning">⚠ EXTREME SURVIVAL MODE ENGAGED · GPS THROTTLED TO 45s</string>
+</resources>

@@ -11,6 +11,19 @@ bin/
 .project
 .classpath
 
+# Android Build & SDK Artifacts
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/*.iml
+*.apk
+*.ap_
+*.aab
+*.dex
+
 # Powershell runner helper
 powershell.cmd
 
