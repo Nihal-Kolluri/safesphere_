@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>SafeSphere Tactical Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #0f172a; overflow: hidden; font-family: -apple-system, sans-serif; }
+        #map { width: 100%; height: 100%; }
+        .radar-box {
+            position: absolute; top: 10px; right: 10px; z-index: 1000;
+            background: rgba(15, 23, 42, 0.85); border: 1px solid #334155;
+            border-radius: 8px; padding: 6px 10px; color: #f8fafc; font-size: 11px; font-weight: bold;
+        }
+        .beacon-pulse {
+            width: 18px; height: 18px; background: #dc2626; border-radius: 50%;
+            border: 2px solid #ffffff; box-shadow: 0 0 14px #ef4444;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.9; }
+            50% { transform: scale(1.4); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 0.9; }
+        }
+    </style>
+</head>
+<body>
+    <div class="radar-box" id="radarLabel">● TACTICAL RADAR ACTIVE</div>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map', { zoomControl: false }).setView([17.3850, 78.4867], 15);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            subdomains: 'abcd'
+        }).addTo(map);
+
+        var victimMarker = null;
+        var proximityCircle = null;
+        var deviationLine = null;
+        var volunteerLayer = L.layerGroup().addTo(map);
+
+        // Safe Planned Corridor
+        var safeCorridor = [
+            [17.3800, 78.4810],
+            [17.3825, 78.4840],
+            [17.3850, 78.4867]
+        ];
+        L.polyline(safeCorridor, { color: '#22c55e', weight: 4, opacity: 0.8, dashArray: '4, 4' }).addTo(map);
+
+        function updateLocation(lat, lon, label) {
+            if (victimMarker) map.removeLayer(victimMarker);
+            if (proximityCircle) map.removeLayer(proximityCircle);
+
+            var pulseIcon = L.divIcon({
+                className: 'custom-pulse',
+                html: '<div class="beacon-pulse"></div>',
+                iconSize: [18, 18],
+                iconAnchor: [9, 9]
+            });
+
+            victimMarker = L.marker([lat, lon], { icon: pulseIcon }).addTo(map);
+            victimMarker.bindPopup('<b>VICTIM LOCATION</b><br>' + (label || 'SafeSphere Mobile Client')).openPopup();
+
+            proximityCircle = L.circle([lat, lon], {
+                radius: 400, color: '#ef4444', weight: 1, fillOpacity: 0.08
+            }).addTo(map);
+
+            map.panTo([lat, lon]);
+        }
+
+        function setRouteDeviation(isDeviated, devLat, devLon) {
+            if (deviationLine) map.removeLayer(deviationLine);
+            if (isDeviated) {
+                deviationLine = L.polyline([[17.3850, 78.4867], [devLat || 17.3890, devLon || 78.4920]], {
+                    color: '#ef4444', weight: 3, dashArray: '6, 6'
+                }).addTo(map);
+                document.getElementById('radarLabel').innerHTML = '⚠ CRITICAL ROUTE DEVIATION';
+                document.getElementById('radarLabel').style.color = '#ef4444';
+            } else {
+                document.getElementById('radarLabel').innerHTML = '● TACTICAL RADAR ACTIVE';
+                document.getElementById('radarLabel').style.color = '#f8fafc';
+            }
+        }
+
+        function loadVolunteers() {
+            var volunteers = [
+                { id: "VOL-101", name: "Ramesh Sharma", lat: 17.3870, lon: 78.4890, dist: "0.4 km", cpr: false },
+                { id: "VOL-204", name: "Dr. Ananya Reddy", lat: 17.3910, lon: 78.4920, dist: "0.8 km", cpr: true },
+                { id: "VOL-305", name: "Vikram Singh", lat: 17.3860, lon: 78.4875, dist: "0.25 km", cpr: true }
+            ];
+
+            volunteerLayer.clearLayers();
+            volunteers.forEach(function(v) {
+                var color = v.cpr ? '#3b82f6' : '#94a3b8';
+                var marker = L.circleMarker([v.lat, v.lon], {
+                    radius: 8, fillColor: color, color: '#ffffff', weight: 1.5, fillOpacity: 0.9
+                });
+                marker.bindPopup('<b>' + v.id + ' (' + v.name + ')</b><br>Dist: ' + v.dist + '<br>CPR: ' + (v.cpr ? 'YES' : 'NO'));
+                volunteerLayer.addLayer(marker);
+            });
+        }
+
+        updateLocation(17.3850, 78.4867, "Initial Position");
+        loadVolunteers();
+    </script>
+</body>
+</html>

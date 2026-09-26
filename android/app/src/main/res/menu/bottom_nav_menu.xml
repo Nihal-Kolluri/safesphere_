@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_shield"
+        android:icon="@drawable/ic_shield"
+        android:title="SOS Shield" />
+
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@drawable/ic_map"
+        android:title="Safe Journey" />
+
+    <item
+        android:id="@+id/nav_medical"
+        android:icon="@drawable/ic_medical"
+        android:title="Medical ID" />
+
+    <item
+        android:id="@+id/nav_sync"
+        android:icon="@drawable/ic_sync"
+        android:title="IoT Sync" />
+</menu>

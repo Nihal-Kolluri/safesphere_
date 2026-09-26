@@ -88,12 +88,27 @@ public class EmbeddedAgentGateway {
                     Telemetry tel = stateEngine.getCurrentCapsule().getTelemetry();
                     tel.setCrashImpactG(intensity);
 
-                    if (threatHint.equalsIgnoreCase("weapon") || threatHint.equalsIgnoreCase("fire")) {
-                        ThreatResult threat = threatHint.equalsIgnoreCase("weapon") ?
+                    if (json.has("latitude") && json.has("longitude")) {
+                        tel.setLatitude(json.get("latitude").getAsDouble());
+                        tel.setLongitude(json.get("longitude").getAsDouble());
+                    }
+                    if (json.has("capsule_id")) {
+                        stateEngine.getCurrentCapsule().setCapsuleId(json.get("capsule_id").getAsString());
+                    }
+                    if (json.has("encrypted_payload")) {
+                        stateEngine.getCurrentCapsule().setEncryptedEvidence(json.get("encrypted_payload").getAsString());
+                    }
+
+                    if (threatHint.equalsIgnoreCase("weapon") || threatHint.equalsIgnoreCase("fire") || threatHint.contains("HAZARD")) {
+                        ThreatResult threat = threatHint.toLowerCase().contains("weapon") ?
                                 ThreatResult.weaponDetected(0.95) : ThreatResult.fireDetected(0.92);
                         stateEngine.evaluateThreatResult(threat);
+                    } else if (threatHint.equalsIgnoreCase("CONFIRMED_SOS")) {
+                        stateEngine.confirmEmergencyImmediately();
+                    } else if (threatHint.equalsIgnoreCase("MANUAL_SOS")) {
+                        stateEngine.triggerSOS();
                     } else {
-                        stateEngine.evaluateSensorSpike(tel, "External IoT Sensor Trigger: " + sensorType);
+                        stateEngine.evaluateSensorSpike(tel, "Inbound Mobile Sensor: " + sensorType + " (" + threatHint + ")");
                     }
 
                     String response = stateEngine.getCurrentCapsule().toJson();
